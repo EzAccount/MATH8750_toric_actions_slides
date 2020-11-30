@@ -1,0 +1,109 @@
+\documentclass{beamer}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{tikz-cd}
+\newtheorem{proposition}{Proposition}[theorem]
+\usetheme{metropolis}
+\def\exp{{\rm exp}}          
+\def\R{\mathbb{R}}
+\def\Z{\mathbb{Z}}
+\def\T{\mathbb{T}}
+\def\Sympl{\rm Sympl}
+\title{Convexity Theorem and Integrable Systems}
+\date{\today}
+\author{Mikhail Tikhonov}
+\institute{University of Virginia}
+
+\begin{document}
+
+  \maketitle
+  \section{Introduction and required definitions}
+  \begin{frame}{Exponential map}
+    Let $G$ be a Lie group. By a one-parameter subgroup of $G$ we mean homorphism $\mathbb{R} \to G$.
+    \[
+        \hom_{\text{Lie}} (\mathbb{R}, G)   \ni   \theta \mapsto \left.  \frac{d}{dt} \right|_0 \theta(t) \in T_e G 
+    \]
+    We define the Lie group exponential map to be:
+    \[
+        T_e G \ni X \mapsto \exp\ X = \theta (1) \in G,  
+    \]
+    where $\theta$ is the one-parameter subgroup of $G$ corresponding to $X$.
+  \end{frame}
+  \begin{frame}{Exponential map}
+    \begin{proposition}
+        
+
+        The exponential map is smooth and natural, i.e.
+
+        \[
+            \begin{tikzcd}[ampersand replacement=\&, column sep=small]
+                {T_e G} \&  \&{T_{e'} G'} \\
+                \\ 
+                G \& \&  G' \\
+                \arrow["exp",from=1-1, to=3-1]
+                \arrow["T_e \phi", from=1-1, to=1-3]
+                \arrow["exp",from=1-3, to=3-3]
+                \arrow["\phi", from=3-1, to=3-3]
+            \end{tikzcd}
+        \]
+        where $\phi \in \hom (G, G')$.
+
+        Moreover if $X \in T_e G$ then $\exp\  (t+s) X = (\exp\  tX) \cdot (\exp\  sX)$ for all $t,s \in \R$, where $\cdot$ stands for Lie group product.
+    \end{proposition}
+            
+\end{frame}
+\begin{frame}{Riemannian analogue of exponential map}
+    Let $(M,g)$ be a riemannian manifold and let $p \in M$ be a point of $M$. The riemannian exponential map starting at $p$ is defined by:
+    
+    \[ 
+        T_p M \ni X \mapsto \exp_p X = \gamma_X(1) \in M
+    \]
+    where $\gamma_X$ is the unique geodesic starting at $p$ with tangent vector $X$
+
+    \begin{proposition}
+
+
+        The exponential map is smooth and natural, i.e.
+
+        \[
+            \begin{tikzcd}[ampersand replacement=\&, column sep=small]
+                {T_p M} \&  \&{T_{p'} M'} \\
+                \\ 
+                M \& \&  M' \\
+                \arrow["\exp_p",from=1-1, to=3-1]
+                \arrow["T_p \phi", from=1-1, to=1-3]
+                \arrow["\exp_p",from=1-3, to=3-3]
+                \arrow["\phi", from=3-1, to=3-3]
+            \end{tikzcd}
+        \]
+        where $\phi$ is an isometry.
+
+        Moreover if $X \in T_p M$ then $\exp_p tX = \gamma_X (t)$ for  any $t \in \R$
+    \end{proposition}
+            
+\end{frame}
+\begin{frame}{Normal coordinates}
+    \begin{proposition}
+        There exist $U$ and $V$ open neighborhoods respectively of $o \in T_p M$ and $p \in M$, s.t. $\exp_p : U \to V$ is a diffeomorphism. Futhermore if we fix an orthonormal basis of $T_p M$ we obtain an isomorphism $F$ with $\R^n$, combined with $\exp^{-1}$ gives normal cooridnate chart.
+       
+    \end{proposition}
+   \begin{proposition}
+       Let $G$ be a Lie group equipped with bi-invariant riemannian metric. Then the Lie group exponential map is precisely the reimannian exponential map starting at the identity.
+   \end{proposition}
+\end{frame}
+
+\begin{frame}{Morse theory}
+    Let $f: M \to \R$ be a Morse-Bott function on a compact riemannian manifold whose critical submanifolds have all index and coindex different from one. The the level sets of $f$ are connected.
+\end{frame}
+\section{Convexity theorem}
+\begin{frame}{Convexity theorem}
+    Let $(M, w)$ be a compact connected symplectic manifold, and let $\T^m$ be an m-torus. Suppose that $\psi: \T^m \to \Sympl (M,w)$ is a hamiltonian action with moment map $\mu: M \to \R^m$. Then:
+    \begin{enumerate}
+        \item the levels of $\mu$ are connected
+        \item the image of $\mu$ is convex
+        \item the image of $\mu$ is convex hull of the images of the fixed points of the action
+    \end{enumerate}
+
+\end{frame}
+\end{document}
